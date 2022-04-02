@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>GPT-3 Persona Bot: {{persona.name}}</title>
+  </head>
+  <body>
+    <h1>GPT-3 Persona: {{ persona.name }}</h1>
+    <h3>Inspired by {{persona.inspired_by}}</h3>
+    <h3>Designed by {{persona.designed_by}}</h3>
+    <div>
+      <div id="chatbox">
+        <p class="botText"><span>Hi! I'm the {{ persona.name }} persona.</span></p>
+      </div>
+      <div id="loading">
+        <img src="/static/spinner.gif" class="loading">
+      </div>
+      <div id="userInput">
+        <input id="textInput" type="text" name="msg" placeholder="Message">
+        <input id="buttonInput" type="submit" value="Send">
+      </div>
+
+      <script> 
+
+        window.appleText = '';
+
+        function getBotResponse() {
+          console.log(window.appleText);
+          $("#textInput").prop( "disabled", true );
+          $("#buttonInput").prop( "disabled", true );
+          $("#loading").show()
+          
+          if (window.appleText.length > 0) {
+            var rawText = window.appleText;
+          } else {
+            var rawText = $("#textInput").val();
+          }
+          var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          $.get("/get", { msg: rawText }).done(function(data) {
+            console.log(data)
+            var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+            $("#chatbox").append(botHtml);
+            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+            $("#textInput").prop( "disabled", false );
+            $("#buttonInput").prop( "disabled", false );
+            $("#loading").hide()
+          });
+
+          window.appleText = '';
+        }
+        $("#textInput").keypress(function(e) {
+            if ((e.which == 13) && document.getElementById("textInput").value != "" ){
+                getBotResponse();
+            }
+        });
+        $("#buttonInput").click(function() {
+            if (document.getElementById("textInput").value != "") {
+                getBotResponse();
+            }
+        })
+        
+        $(document).ready(function(){ 
+            if (!!window.EventSource) {
+                console.log('SSE supported.');
+                
+                var source = new EventSource('http://127.0.0.1:8000/barcode');
+
+                source.addEventListener('message', function(e) {
+                  console.log(e.data);
+                  // switch case e.data
+                  switch (e.data) {
+                    case "value":
+        
+                      break;
+                  
+                    default:
+                      appleText = "I am fucking tired :("
+                      getBotResponse(appleText)
+                      break;
+                  }
+                }, false);
+
+                source.addEventListener('open', function(e) {
+                  console.log('Connection was opened.');
+                }, false);
+
+                source.addEventListener('error', function(e) {
+                  if (e.readyState == EventSource.CLOSED) {
+                    console.log('Connection was closed.');
+                  }
+                }, false);
+
+            } else {
+                console.log('SSE notsupported.');
+            }
+        });
+      </script>
+    </div>
+  </body>
+</html>
+
