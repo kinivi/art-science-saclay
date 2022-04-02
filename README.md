@@ -5,6 +5,10 @@ You will need a key.
 
 ## how to run the web interface
 
+Add the key: 
+
+`export OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXX`
+
 Same as the cli: 
 
 `python3 web.py -p apple`
