@@ -1,27 +1,90 @@
 body {
-    font-family: Garamond;
+    background: rgba(1, 1, 19);
+    background-image: url("apple-bckg.png");
+    font-family: CopyFont;
+    background-size: 150%;
+    background-position: center top -250px;
+    animation: shrink 3s infinite alternate;
+  }
+
+
+  
+  @keyframes shrink {
+    0% {
+      background-size: 150%;
+    }
+    100% {
+      background-size: 145%;
+    }
+  }
+
+  @font-face {
+    font-family: 'CopyFont'; /*a name to be used later*/
+    src: url("InputMono-Regular.woff"); /*URL to font*/
 }
 
+
+
+
+content{
+    position: center;
+    z-index: 9;
+
+}
+
+
 h1 {
-    color: black;
+    background-image: url("apple-tex1.png");
+    background-clip: text;
+    background-size: 80%;
+	-webkit-background-clip: text;
+	color: transparent;
+    opacity: 70%;
+
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 10%;
     text-align: center;
-    font-size: 40px;
+
+    font-family: HeadlineFont;
+    font-size: 100px;
+    letter-spacing: 3px;
+}
+
+@font-face {
+    font-family: 'HeadlineFont'; /*a name to be used later*/
+    src: url("SharpGrotesk-Black25.otf"); /*URL to font*/
 }
 
 h3 {
-    color: black;
-    font-size: 20px;
-    margin-top: 3px;
-    text-align: center;
+    color: rgb(206, 206, 206);
+    font-size: 12px;
+    font-weight: lighter;
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+}
+
+p{
+    padding: 10px;  
+}
+
+h4 {
+    color: rgb(206, 206, 206);
+    font-size: 12px;
+    font-weight: lighter;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
 }
 
 #chatbox {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+
+    margin-left: 30%;
+    width: 35%;
     margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #userInput {
@@ -34,8 +97,6 @@ h3 {
 #textInput {
     width: 87%;
     border: none;
-    border-bottom: 3px solid #009688;
-    font-family: monospace;
     font-size: 17px;
 }
 
@@ -46,7 +107,7 @@ h3 {
 }
 
 .userText {
-    color: white;
+    color: rgba(1, 1, 19);
     font-family: monospace;
     font-size: 17px;
     text-align: right;
@@ -54,21 +115,32 @@ h3 {
 }
 
 .userText span {
-    background-color: #009688;
     padding: 10px;
     border-radius: 2px;
 }
 
 .botText {
-    color: white;
-    font-family: monospace;
-    font-size: 17px;
+    color: rgb(179, 248, 68);
+    margin: 10px;
+    font-size: 14px;
     text-align: left;
     line-height: 30px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+
+    position: relative;
+    line-height: 24px;
+    width: 300px;
+    border-radius: 40px;
+    padding: 24px;
+
+}
+
+chat-bubble{
+    
 }
 
 .botText span {
-    background-color: #EF5350;
     padding: 10px;
     border-radius: 2px;
 }
