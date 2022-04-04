@@ -27,6 +27,16 @@
 
           window.appleText = '';
 
+          function botMessageHtml(message) {
+              {#return '<p class="botText"><span>' + message + '</span></p>';#}
+              return `<div class="botTextDiv"> ${message} </div>`;
+          }
+
+          function selfMessageHtml(message) {
+              {#return '<p class="botText"><span>' + message + '</span></p>';#}
+              return `<div class="selfTextDiv"> ${message} </div>`;
+          }
+
           function getBotResponse() {
             console.log(window.appleText);
             $("#textInput").prop( "disabled", true );
@@ -38,13 +48,17 @@
             } else {
               var rawText = $("#textInput").val();
             }
-            var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
-            $("#textInput").val("");
+            {#var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';#}
+            {#$("#textInput").val("");#}
+            {#$("#chatbox").append(userHtml);#}
+            {#document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});#}
+
+            var userHtml = selfMessageHtml(rawText);
             $("#chatbox").append(userHtml);
-            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+
             $.get("/get", { msg: rawText }).done(function(data) {
               console.log(data)
-              var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+              var botHtml = botMessageHtml(data);
               $("#chatbox").append(botHtml);
               document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
               $("#textInput").prop( "disabled", false );

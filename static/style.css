@@ -78,13 +78,14 @@ h4 {
 }
 
 #chatbox {
-
     margin-left: 30%;
-    width: 35%;
+    /*width: 35%;*/
+    width: 60%;
     margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #userInput {
@@ -133,7 +134,41 @@ h4 {
     width: 300px;
     border-radius: 40px;
     padding: 24px;
+}
 
+.botTextDiv {
+    color: rgb(179, 248, 68);
+    margin: 10px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 30px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+
+    position: relative;
+    float: right;
+    line-height: 24px;
+    width: 300px;
+    border-radius: 40px;
+    padding: 24px;
+}
+
+.selfTextDiv {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    margin-left: -70%;
+    font-size: 14px;
+    text-align: left;
+    line-height: 30px;
+    backdrop-filter: blur(10px);
+
+    position: relative;
+    float: left;
+    line-height: 24px;
+    width: 300px;
+    border-radius: 40px;
+    padding: 24px;
 }
 
 chat-bubble{
