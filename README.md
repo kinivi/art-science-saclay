@@ -1,26 +1,31 @@
-# gpt3-persona-bot
-a simple bot that allows you to chat with various personas
+# 🍎 Mx. Apple: GPT-3 powered Q\A personality 
+This project intends to connect art&science into one idea. Idea of tighter connection between human and objects of everyday life
+a simple bot that allows you to chat with various personas.
 
-You will need a key. 
+![apple](https://user-images.githubusercontent.com/13486777/162563320-45883d84-16d6-4ad7-a095-f812e1b93246.png)
 
-## how to run the web interface
+
+## Web interface
+🚩 You need key to access GPT-3 by OpenAI. Check [this website](https://openai.com/blog/openai-api/)
+
+Install requirements:
+`pip install -r requirements.txt`
 
 Add the key: 
 
 `export OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXX`
 
-Same as the cli: 
+Run Flask back-end: 
 
-`python3 web.py -p apple`
+`python3 web.py -p apple`  
 
-**This is not meant to be a public facing product. If you want to make it public, please be responsible. Also remember to talk to openAI before you deploy anything into "production".**
+## Hardware
+Our idead is that instead of keyaboard we used touches. Special conductive paint was painted onto apple and connected to the Arduino. Each point corresponds to the topics of question. Touch triggers serial port message which listened for at Web UI. That triggers question to chatbot and display the responce.  
 
-  
-  
+<img src="https://user-images.githubusercontent.com/13486777/162563697-ffd8aacb-23ad-4962-816a-65c76e0e69f2.jpg" width="400">
+
 ---
 
-# thanks 
+## 🫡 Thanks 
 
-Thanks to [gpt3-persona-bot](https://github.com/harperreed/gpt3-persona-bot) and team for the awesome API. It is really amazing and has been loads of fun. 
-
-Can't wait to see how it turns out
+Thanks to [gpt3-persona-bot](https://github.com/harperreed/gpt3-persona-bot) for the awesome example of creating personality in few steps with OpenaAI API
