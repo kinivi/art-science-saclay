@@ -13,8 +13,8 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config['SERIAL_TIMEOUT'] = 0.2
-app.config['SERIAL_PORT'] = '/dev/cu.usbmodem1103'
-app.config['SERIAL_BAUDRATE'] = 115200
+app.config['SERIAL_PORT'] = '/dev/cu.usbmodemHIDPC1'
+app.config['SERIAL_BAUDRATE'] = 9600
 app.config['SERIAL_BYTESIZE'] = 8
 app.config['SERIAL_PARITY'] = 'N'
 app.config['SERIAL_STOPBITS'] = 1
@@ -52,7 +52,7 @@ def event_barcode():
     ser.parity = app.config['SERIAL_PARITY']
     ser.stopbits = app.config['SERIAL_STOPBITS']
     ser.open()
-    s = ser.read(7)
+    s = ser.read(1)
     yield 'data: %s\n\n' % s
 
 @app.route('/barcode')

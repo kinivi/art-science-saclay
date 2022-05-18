@@ -86,15 +86,34 @@
                   var source = new EventSource('http://127.0.0.1:8000/barcode');
 
                   source.addEventListener('message', function(e) {
-                    console.log(e.data);
-                    // switch case e.data
-                    switch (e.data) {
-                      case "value":
-          
+   
+                    var msg = e.data.split("b")[1];
+
+                    //list of apple texts
+                    list_of_appleText = ["What is your favorite color?",  "What's your story?", "Do you have any friends?", "What's the scariest thing for you?", "Hello, How are you?"]
+                    // randomli select one of the apple texts
+                    appleText = list_of_appleText[Math.floor(Math.random() * list_of_appleText.length)];
+                    console.log(appleText);
+                    getBotResponse(appleText)
+                    switch (msg) {
+                      case "J":
+                        appleText = "What is your favorite color?"
+                        getBotResponse(appleText)
                         break;
-                    
+                      case "U":
+                        appleText = "What's your story?"
+                        getBotResponse(appleText)
+                        break;
+                      case "H":
+                        appleText = "Do you have any friends?"
+                        getBotResponse(appleText)
+                        break;
+                      case "Y":
+                        appleText = "What's the scariest thing for you?"
+                        getBotResponse(appleText)
+                        break;
                       default:
-                        appleText = "I am fucking tired :("
+                        appleText = "Hello, How are you?"
                         getBotResponse(appleText)
                         break;
                     }
