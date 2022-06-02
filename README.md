@@ -2,6 +2,8 @@
 This project intends to connect art&science into one idea. Idea of tighter connection between human and objects of everyday life
 a simple bot that allows you to chat with various personas.
 
+📰 Check [published article at Towards Data Science](https://towardsdatascience.com/art-science-with-gpt-3-persona-chatbot-5dbdd29a6229) for more! 
+
 ![apple](https://user-images.githubusercontent.com/13486777/162563320-45883d84-16d6-4ad7-a095-f812e1b93246.png)
 
 
